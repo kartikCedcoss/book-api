@@ -1,0 +1,46 @@
+<?php
+ //echo "<pre>";
+ //print_r($book);
+foreach($data as $k => $v){ 
+    $data_details =  $v['details'];
+      }
+      ?>
+<div class="container-fluid"> 
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-horizontal">
+                  <a href="../getbook/details?cover=<?php echo  $book['cover_i'];?>&key=<?php echo $key;?>&isbn=<?php echo $book['isbn'][0];?>"><div class="img-square-wrapper">
+                        <?php echo '<img itemprop="image" src="//covers.openlibrary.org/b/olid/'.$book['cover_edition_key'].'-M.jpg" height="500" >'; ?>
+                        <div class="text-center">
+                        <a href="https://www.google.co.in/books/edition/<?php   echo $book['ia']['0']; echo "/";  echo $book['id_google']['0'];?>?hl=en ." class="btn btn-primary border-0 mt-2" target="_blank">Book Info</a>
+                       </div>
+
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title"><b><?php  echo $book['title'] ?></b></h4></a>
+                        <p class="card-text">by <?php echo $book['author_name'][0]; ?></p>
+                        <span class=""><small>First published in <?php echo $book['first_publish_year'] ;  ?></small></span></br>
+
+                        <span ><?php  echo $book['edition_count'] ;  ?>  editions in <?php $count = 0; foreach($book['language'] as $k ){
+                            $count +=1;
+                        } 
+                        echo $count;?> languages</span><br>
+                         <p class="card-text mt-4"><b>Sentences:- </b> <?php foreach($book['first_sentence'] as $v){
+                             echo $v;
+                             echo "<br>";
+                         } ?></p>
+                         <p class="card-text mt-4"><b>Alternative Authors:- </b> <?php foreach($book['author_alternative_name'] as $v){
+                             echo $v.",";
+                            
+                         } ?></p>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<?php
+  ?>

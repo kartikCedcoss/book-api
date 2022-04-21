@@ -1,0 +1,54 @@
+<nav class="navbar navbar-light bg-light ">
+  <div class="container-fluid mt-3">
+    <a class="navbar-brand ">Free Open Library <i class="fa fa-book" style="font-size:48px;color:red"></i></a>
+    <form class="d-flex input-group w-auto" action="">
+      <input
+      onchange="this.form.submit()"
+        type="search"
+        class="form-control rounded"
+        placeholder="Search your favorite book"
+        aria-label="Search"
+        aria-describedby="search-addon"
+        name="searchBook"
+      />
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i>
+      </span>
+    </form>
+  </div>
+</nav>
+
+
+
+
+<?php 
+ foreach($bookresult as $key=>$value)
+ {
+     $count=count($value['isbn'])-1;
+?>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-horizontal">
+                  <a class=" purple darken-3 teal-hover lighten-2-hover" href="../getbook/details?cover=<?php echo  $value['cover_i'];?>&key=<?php echo $key;?>&isbn=<?php echo $value['isbn'][0];?>"><div class="img-square-wrapper">
+                        <?php echo '<img itemprop="image" src="//covers.openlibrary.org/b/olid/'.$value['cover_edition_key'].'-M.jpg">'; ?>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title"><b><?php  echo $value['title']; ?></b></h4></a>
+                        <p class="card-text">by <?php echo $value['author_name'][0]; ?></p>
+                        <span class=""><small>First published in <?php echo $value['first_publish_year'] ;  ?></small></span></br>
+
+                        <span ><?php  echo $value['edition_count'] ;  ?>  editions in <?php $count = 0; foreach($value['language'] as $k ){
+                            $count +=1;
+                        } 
+                        echo $count;?> languages</span>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+ } ?>
